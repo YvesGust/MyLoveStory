@@ -1,21 +1,22 @@
 package com.example.yvesgust.mylovestory;
 
-import android.app.LauncherActivity;
+
 import android.content.Intent;
+
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-import java.util.Timer;
+import com.example.yvesgust.mylovestory.Data.Record;
+
 
 public class Launcher extends AppCompatActivity {
+    Record record=new Record();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,11 @@ public class Launcher extends AppCompatActivity {
         gametilte.setTypeface(typeface);
 
         startFlick(findViewById(R.id.startgame_lable));
+
+
+        record.Record();
+
+
 
     }
 
@@ -57,13 +63,16 @@ public class Launcher extends AppCompatActivity {
     }
 
     public void touch(View view){
+
+        if(record.getNumber("isGender")==1){
         Intent intent = new Intent(Launcher.this, MainActivity.class);
         startActivity(intent);
-        finish();
+        finish();}
+        else {
+            Intent intent = new Intent(Launcher.this, Gender.class);
+            startActivity(intent);
+            finish();}
     }
-
-
-
 
 
 }
